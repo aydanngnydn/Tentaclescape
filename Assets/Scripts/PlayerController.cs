@@ -6,12 +6,13 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [Header("Movement")]
-    [SerializeField] private float moveSpeed;
-    [SerializeField] private float jumpSpeed = 15f;
-    [SerializeField] private float jumpDelay = 0.25f;
-    private float jumpTimer;
-    private Vector2 inputDirection;
     private bool facingRight = true;
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private float flySpeed = 15f;
+    //[SerializeField] private float jumpSpeed = 15f;
+    //[SerializeField] private float jumpDelay = 0.25f;
+    //private float jumpTimer;
+    private Vector2 inputDirection;
 
     [Header("Ground Check")]
     [SerializeField] private bool isPlayerGrounded;
@@ -25,36 +26,35 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float gravity = 1;
     [SerializeField] private float fallMultiplier = 4f;
 
-    #region Components
+    [Header("Components")]
     private Rigidbody2D rigidBody;
-    private Animator animator;
-    #endregion
+
+    public event Action OnPlayerJump;
 
     private void Awake()
     {
         rigidBody = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
     }
 
     private void Update()
     {
         GetPlayerInput();
 
-        if (Input.GetButtonDown("Jump"))
-        {
-            jumpTimer = Time.time + jumpDelay;
-        }
+        //if (Input.GetButtonDown("Jump"))
+        //{
+        //    jumpTimer = Time.time + jumpDelay;
+        //}
     }
 
     private void FixedUpdate()
     {
-        MovePlayer(inputDirection.x);
-        ModifyPhysics();
+        MovePlayer(inputDirection);
+        //ModifyPhysics();
 
-        if (CanPlayerJump())
-        {
-            JumpPlayer();
-        }
+        //if (CanPlayerJump())
+        //{
+        //    JumpPlayer();
+        //}
     }
 
     private void GetPlayerInput()
@@ -63,9 +63,10 @@ public class PlayerController : MonoBehaviour
         OnGroundCheck();
     }
 
-    private void MovePlayer(float horizontal)
+    private void MovePlayer(Vector2 inputDirection)
     {
-        rigidBody.AddForce(horizontal * moveSpeed * Vector2.right);
+        rigidBody.AddForce(new Vector2(inputDirection.x * moveSpeed, inputDirection.y * flySpeed));
+        //rigidBody.AddForce(inputdirection * moveSpeed * Vector2.right);
 
         if (CanPlayerFlip())
         {
@@ -78,12 +79,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void JumpPlayer()
-    {
-        rigidBody.velocity = new Vector2(rigidBody.velocity.x, 0);
-        rigidBody.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
-        jumpTimer = 0;
-    }
+    //private void JumpPlayer()
+    //{
+    //    OnPlayerJump?.Invoke();
+    //    rigidBody.velocity = new Vector2(rigidBody.velocity.x, 0);
+    //    rigidBody.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
+    //    jumpTimer = 0;
+    //}
 
     private void FlipFace()
     {
@@ -91,41 +93,41 @@ public class PlayerController : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, facingRight ? 0 : 180, 0);
     }
 
-    private void ModifyPhysics()
-    {
-        bool changingDirection = (inputDirection.x > 0 && rigidBody.velocity.x < 0) || (inputDirection.x < 0 && rigidBody.velocity.x > 0);
-        if (isPlayerGrounded)
-        {
-            if (Math.Abs(inputDirection.x) < 0.4f || changingDirection)
-            {
-                rigidBody.drag = linearDrag;
-            }
-            else
-            {
-                rigidBody.drag = 0f;
-            }
-            rigidBody.gravityScale = 0;
-        }
-        else
-        {
-            rigidBody.drag = linearDrag * 0.15f;
+    //private void ModifyPhysics()
+    //{
+    //    bool changingDirection = (inputDirection.x > 0 && rigidBody.velocity.x < 0) || (inputDirection.x < 0 && rigidBody.velocity.x > 0);
+    //    if (isPlayerGrounded)
+    //    {
+    //        if (Math.Abs(inputDirection.x) < 0.4f || changingDirection)
+    //        {
+    //            rigidBody.drag = linearDrag;
+    //        }
+    //        else
+    //        {
+    //            rigidBody.drag = 0f;
+    //        }
+    //        rigidBody.gravityScale = 0;
+    //    }
+    //    else
+    //    {
+            //rigidBody.drag = linearDrag * 0.15f;
 
-            if (rigidBody.velocity.y < 0)
-            {
-                rigidBody.gravityScale = gravity * fallMultiplier;
-            }
-            else if (rigidBody.velocity.y > 0 && !Input.GetButton("Jump"))
-            {
-                rigidBody.gravityScale = gravity * (fallMultiplier / 2);
-            }
-            else
-            {
-                rigidBody.gravityScale = gravity;
-            }
-        }
-    }
+            //if (rigidBody.velocity.y < 0)
+            //{
+            //    rigidBody.gravityScale = gravity * fallMultiplier;
+            //}
+            //else if (rigidBody.velocity.y > 0 && !Input.GetButton("Jump"))
+            //{
+            //    rigidBody.gravityScale = gravity * (fallMultiplier / 2);
+            //}
+            //else
+            //{
+            //    rigidBody.gravityScale = gravity;
+            //}
+    //    }
+    //}
 
-    #region CanPlayer
+    #region CanPlayer IsPlayer
 
     private bool CanPlayerFlip()
     {
@@ -136,15 +138,19 @@ public class PlayerController : MonoBehaviour
         return false;
     }
 
-    private bool CanPlayerJump()
-    {
-        return isPlayerGrounded && jumpTimer > Time.time;
-    }
+    //private bool CanPlayerJump()
+    //{
+    //    return isPlayerGrounded && jumpTimer > Time.time;
+    //}
 
     private void OnGroundCheck()
     {
-        //isPlayerGrounded = Physics2D.OverlapCircle(groundCheckPosition.position, groundCheckRadius, groundCheckLayer);
         isPlayerGrounded = Physics2D.Raycast(transform.position + colliderOffset, Vector2.down, groundCheckDistance, groundCheckLayer) || Physics2D.Raycast(transform.position - colliderOffset, Vector2.down, groundCheckDistance, groundCheckLayer);
+    }
+
+    public bool IsPlayerOnGround()
+    {
+        return isPlayerGrounded;
     }
 
     #endregion
