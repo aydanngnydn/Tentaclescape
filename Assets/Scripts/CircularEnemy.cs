@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CircularEnemy : MonoBehaviour
+public class CircularEnemy : Enemy
 {
     public float angularSpeed = 1f;
     public float circleRad = 1f;
