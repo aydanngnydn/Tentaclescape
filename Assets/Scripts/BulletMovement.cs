@@ -2,17 +2,22 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class BulletMovement : MonoBehaviour
 {
-    [SerializeField] private float xAxisSpeed;
-    void FixedUpdate()
+    [SerializeField] private float speed;
+    private Rigidbody2D rb;
+
+    private void Awake()
     {
-        transform.Translate(new Vector2(xAxisSpeed * Time.fixedDeltaTime, 0));
+       rb = GetComponent<Rigidbody2D>();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void Start()
     {
-        Debug.Log("yeah");
+        float x = Random.Range(0.1f, 1.0f);
+        float y = Random.Range(0.1f, 1.0f);
+        rb.velocity = new Vector2(x, y) * speed;
     }
 }
