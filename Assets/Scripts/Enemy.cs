@@ -17,13 +17,7 @@ public abstract  class Enemy : MonoBehaviour
             if (gameObject.TryGetComponent(out BulletMovement _))
             {
                 Destroy(this.gameObject);
-                CreateDestroyEffect(contactPoint);
             }
         }
-    }
-    public void CreateDestroyEffect(Vector2 contactPoint)
-    {
-        GameObject effect = Instantiate(destroyEffect, contactPoint, Quaternion.identity);
-        Destroy(destroyEffect, destroyTime);
     }
 }
