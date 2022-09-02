@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public abstract  class Enemy : MonoBehaviour
 {
     [SerializeField] protected GameObject destroyEffect;
-    [SerializeField] private float destroyTime;
-    private void OnCollisionEnter2D(Collision2D other)
+    [SerializeField] protected float destroyTime;
+    protected void OnCollisionEnter2D(Collision2D other)
     {
         Vector2 contactPoint = other.GetContact(0).point;
 

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlyingEnemyMovement : MonoBehaviour
+public class FlyingEnemy : Enemy
 {
     [SerializeField] private float maxDistanceFromStart;
     [SerializeField] private float enemyXAxisSpeed;
