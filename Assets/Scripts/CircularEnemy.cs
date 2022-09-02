@@ -7,16 +7,10 @@ public class CircularEnemy : MonoBehaviour
     public float angularSpeed = 1f;
     public float circleRad = 1f;
  
-    private Vector2 fixedPoint;
     private float currentAngle;
 
     [SerializeField] private float xSpeed;
- 
-    void Start ()
-    {
-        fixedPoint = transform.position;
-    }
- 
+
     void Update ()
     {
         currentAngle += angularSpeed * Time.deltaTime;
