@@ -97,5 +97,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dddaf80434490f74db89193e344c13b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDistanceFromStart: 0.02
+  maxDistanceFromStart: 0.021
   enemyXAxisSpeed: 2
