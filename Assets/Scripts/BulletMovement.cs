@@ -8,6 +8,7 @@ public class BulletMovement : MonoBehaviour
 {
     [SerializeField] private float speed;
     private Rigidbody2D rb;
+    private Vector3 lastVelocity;
 
     private void Awake()
     {
@@ -16,8 +17,25 @@ public class BulletMovement : MonoBehaviour
 
     private void Start()
     {
-        float x = Random.Range(-1.0f, 1.0f);
-        float y = Mathf.Sqrt(1 - x*x) * (Random.Range(0,2)*2-1);
+        float posNeg = (Random.Range(0, 2) * 2 - 1);
+        
+        float x = Random.Range(0.15f, 0.9f) * posNeg;
+        float y = Mathf.Sqrt(1 - x*x) * posNeg;
+        
         rb.velocity = new Vector2(x, y) * speed;
+    }
+
+    private void Update()
+    {
+        if(Input.GetButtonDown("Fire1"))
+        {
+            lastVelocity = rb.velocity;
+            rb.velocity = new Vector2(0, 0);
+        }
+        
+        else if (Input.GetButtonUp("Fire1"))
+        {
+            rb.velocity = lastVelocity;
+        }
     }
 }
