@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8758718241944012600}
   - component: {fileID: 7784260118911630856}
+  - component: {fileID: 970676794686501489}
   m_Layer: 0
   m_Name: FlyingEnemy
   m_TagString: Untagged
@@ -84,3 +85,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &970676794686501489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6204865622393905799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dddaf80434490f74db89193e344c13b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistanceFromStart: 0.02
+  enemyXAxisSpeed: 2

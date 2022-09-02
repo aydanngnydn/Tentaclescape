@@ -1,17 +1,29 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class FlyingEnemyMovement : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private float maxDistanceFromStart;
+    [SerializeField] private float enemyXAxisSpeed;
+    private Vector3 pos;
+
+    private void Start()
     {
-        
+        pos = transform.position;
     }
-    
-    void Update()
+
+    private void Update()
     {
+        if (pos.x > 0)
+        {
+            transform.Translate(new Vector2(- enemyXAxisSpeed * Time.fixedDeltaTime, Mathf.Sin(Time.realtimeSinceStartup) * maxDistanceFromStart));
+        }
+        else if (pos.x < 0)
+        {
+            transform.Translate(new Vector2(enemyXAxisSpeed * Time.fixedDeltaTime, Mathf.Sin(Time.realtimeSinceStartup) * maxDistanceFromStart));
+        }
         
     }
 }
