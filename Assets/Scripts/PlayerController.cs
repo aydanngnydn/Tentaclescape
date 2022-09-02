@@ -8,15 +8,16 @@ public class PlayerController : MonoBehaviour
     [Header("Movement")]
     [SerializeField] private float moveSpeed;
     [SerializeField] private float jumpSpeed = 15f;
-    [SerializeField] private float jumpDelay = 15f;
-    private float jumpTimer = 15f;
+    [SerializeField] private float jumpDelay = 0.25f;
+    private float jumpTimer;
     private Vector2 inputDirection;
-    private bool facingRight;
+    private bool facingRight = true;
 
     [Header("Ground Check")]
     [SerializeField] private bool isPlayerGrounded;
     [SerializeField] private LayerMask groundCheckLayer;
     [SerializeField] private float groundCheckDistance;
+    [SerializeField] private Vector3 colliderOffset;
 
     [Header("Physics")]
     [SerializeField] private float maxSpeed = 7f;
@@ -39,9 +40,9 @@ public class PlayerController : MonoBehaviour
     {
         GetPlayerInput();
 
-        if (CanPlayerJump())
+        if (Input.GetButtonDown("Jump"))
         {
-            JumpPlayer();
+            jumpTimer = Time.time + jumpDelay;
         }
     }
 
@@ -49,7 +50,11 @@ public class PlayerController : MonoBehaviour
     {
         MovePlayer(inputDirection.x);
         ModifyPhysics();
-        //JumpPlayer();
+
+        if (CanPlayerJump())
+        {
+            JumpPlayer();
+        }
     }
 
     private void GetPlayerInput()
@@ -77,6 +82,7 @@ public class PlayerController : MonoBehaviour
     {
         rigidBody.velocity = new Vector2(rigidBody.velocity.x, 0);
         rigidBody.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
+        jumpTimer = 0;
     }
 
     private void FlipFace()
@@ -104,11 +110,11 @@ public class PlayerController : MonoBehaviour
         {
             rigidBody.drag = linearDrag * 0.15f;
 
-            if(rigidBody.velocity.y < 0)
+            if (rigidBody.velocity.y < 0)
             {
                 rigidBody.gravityScale = gravity * fallMultiplier;
             }
-            else if(rigidBody.velocity.y > 0 && !Input.GetButton("Jump"))
+            else if (rigidBody.velocity.y > 0 && !Input.GetButton("Jump"))
             {
                 rigidBody.gravityScale = gravity * (fallMultiplier / 2);
             }
@@ -132,13 +138,13 @@ public class PlayerController : MonoBehaviour
 
     private bool CanPlayerJump()
     {
-        return Input.GetButtonDown("Jump") && isPlayerGrounded;
+        return isPlayerGrounded && jumpTimer > Time.time;
     }
 
     private void OnGroundCheck()
     {
         //isPlayerGrounded = Physics2D.OverlapCircle(groundCheckPosition.position, groundCheckRadius, groundCheckLayer);
-        isPlayerGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, groundCheckLayer);
+        isPlayerGrounded = Physics2D.Raycast(transform.position + colliderOffset, Vector2.down, groundCheckDistance, groundCheckLayer) || Physics2D.Raycast(transform.position - colliderOffset, Vector2.down, groundCheckDistance, groundCheckLayer);
     }
 
     #endregion
@@ -148,7 +154,8 @@ public class PlayerController : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, transform.position + Vector3.down * groundCheckDistance);
+        Gizmos.DrawLine(transform.position + colliderOffset, transform.position + colliderOffset + (Vector3.down * groundCheckDistance));
+        Gizmos.DrawLine(transform.position - colliderOffset, transform.position - colliderOffset + (Vector3.down * groundCheckDistance));
     }
     #endregion
 }
