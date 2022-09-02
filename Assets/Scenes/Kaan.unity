@@ -619,8 +619,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 20
-  jumpSpeed: 8
-  jumpDelay: 0.3
+  jumpSpeed: 10
+  jumpDelay: 0.25
+  jumpMode: 1
   isPlayerGrounded: 0
   groundCheckLayer:
     serializedVersion: 2
@@ -691,7 +692,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1416661668}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.87, z: 0}
+  m_LocalPosition: {x: 0, y: 1.07, z: 0}
   m_LocalScale: {x: 1, y: 1.5049, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -851,7 +852,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8770741258205510450, guid: 4387f21f28dc25f468d65671c32e3690, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4387f21f28dc25f468d65671c32e3690, type: 3}
