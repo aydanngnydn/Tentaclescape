@@ -16,8 +16,8 @@ public class BulletMovement : MonoBehaviour
 
     private void Start()
     {
-        float x = Random.Range(0.1f, 1.0f);
-        float y = Mathf.Sqrt(1 - x*x);
+        float x = Random.Range(-1.0f, 1.0f);
+        float y = Mathf.Sqrt(1 - x*x) * (Random.Range(0,2)*2-1);
         rb.velocity = new Vector2(x, y) * speed;
     }
 }
