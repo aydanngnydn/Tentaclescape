@@ -16,6 +16,5 @@ public class ReflectCollision : MonoBehaviour
       var speed = rb.velocity.magnitude;
       var direction = Vector3.Reflect(rb.velocity.normalized, col.contacts[0].normal);
       rb.velocity = direction * speed;
-      Debug.Log(rb.velocity);
    }
 }
