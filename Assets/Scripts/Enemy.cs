@@ -6,8 +6,6 @@ public abstract  class Enemy : MonoBehaviour
 {
     protected void OnCollisionEnter2D(Collision2D other)
     {
-        Vector2 contactPoint = other.GetContact(0).point;
-
         GameObject gameObject = other.gameObject;
 
         if (gameObject != null)
