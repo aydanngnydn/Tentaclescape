@@ -29,13 +29,15 @@ public class Score : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().buildIndex == 1)
         {
+            if(scoreTextFinish.gameObject.activeSelf)
+            {
+                scoreTextFinish.gameObject.SetActive(false);
+            }
             ScorePanel();
             lastScore = score;
         }
         else if (SceneManager.GetActiveScene().buildIndex == 2)
         {
-            scoreTextFinish.gameObject.SetActive(false);
-
             ScoreEndPanel();
         }
     }
