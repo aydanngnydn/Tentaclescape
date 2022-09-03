@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rigidBody;
 
     public event Action OnPlayerJump;
+    public event Action OnPlayerFly;
 
     private void Awake()
     {
@@ -42,16 +43,18 @@ public class PlayerController : MonoBehaviour
         GetPlayerInput();
         if (jumpMode)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Z))
             {
                 jumpTimer = Time.time + jumpDelay;
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.C))
         {
             jumpMode = !jumpMode;
         }
+
+        PlayerFlyingCheck();
     }
 
     private void FixedUpdate()
@@ -132,7 +135,7 @@ public class PlayerController : MonoBehaviour
             {
                 rigidBody.gravityScale = gravity * fallMultiplier;
             }
-            else if (rigidBody.velocity.y > 0 && !Input.GetKey(KeyCode.Space))
+            else if (rigidBody.velocity.y > 0 && !Input.GetKey(KeyCode.Z))
             {
                 rigidBody.gravityScale = gravity * (fallMultiplier / 2);
             }
@@ -158,6 +161,19 @@ public class PlayerController : MonoBehaviour
     private void OnGroundCheck()
     {
         isPlayerGrounded = Physics2D.Raycast(transform.position + colliderOffset, Vector2.down, groundCheckDistance, groundCheckLayer) || Physics2D.Raycast(transform.position - colliderOffset, Vector2.down, groundCheckDistance, groundCheckLayer);
+    }
+
+    public bool IsPlayerOnGround()
+    {
+        return isPlayerGrounded;
+    }
+
+    private void PlayerFlyingCheck()
+    {
+        if (!jumpMode && !isPlayerGrounded)
+        {
+            OnPlayerFly?.Invoke();
+        }
     }
 
     #endregion

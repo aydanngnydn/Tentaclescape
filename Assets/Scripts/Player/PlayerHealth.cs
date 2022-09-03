@@ -6,15 +6,9 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private int contactDamage;
     [SerializeField] protected int maxHealth;
     [SerializeField] protected int currentHealth;
-    private Animator animator;
 
     public event Action OnHealthDecrease;
     public event Action OnPlayerDeath;
-
-    private void Awake()
-    {
-        animator = GetComponent<Animator>();
-    }
 
     public void DecraseHealth(int damage)
     {
@@ -22,12 +16,14 @@ public class PlayerHealth : MonoBehaviour
 
         if (!AliveCheck())
         {
-            gameObject.SetActive(false);
-
             OnPlayerDeath?.Invoke();
-        }
 
-        OnHealthDecrease?.Invoke();
+            //gameObject.SetActive(false);
+        }
+        else
+        {
+            OnHealthDecrease?.Invoke();
+        }
     }
 
     public bool AliveCheck()
@@ -46,7 +42,7 @@ public class PlayerHealth : MonoBehaviour
                 DecraseHealth(contactDamage);
             }
 
-            else if(gameObject.TryGetComponent(out BulletMovement _))
+            else if (gameObject.TryGetComponent(out BulletMovement _))
             {
                 DecraseHealth(contactDamage);
             }

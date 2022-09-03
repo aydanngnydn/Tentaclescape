@@ -216,8 +216,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 337837646}
-  - component: {fileID: 337837648}
   - component: {fileID: 337837647}
+  - component: {fileID: 337837648}
   m_Layer: 0
   m_Name: Character Animation
   m_TagString: Untagged
@@ -253,7 +253,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 1416661672}
-  animator: {fileID: 337837648}
+  animator: {fileID: 0}
+  speedOffset: 2
 --- !u!95 &337837648
 Animator:
   serializedVersion: 4
@@ -264,7 +265,7 @@ Animator:
   m_GameObject: {fileID: 337837645}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ba45a6d4975026b42aa0504a5ce81c86, type: 2}
+  m_Controller: {fileID: 9100000, guid: 6a68b64ee50c2a3438452cad5ed76755, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

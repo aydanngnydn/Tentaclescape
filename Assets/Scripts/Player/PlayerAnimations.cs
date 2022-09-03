@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class PlayerAnimations : MonoBehaviour
 {
+    [Header("Components")]
     [SerializeField] private Rigidbody2D rigidBody;
     [SerializeField] private Animator animator;
 
     private PlayerController controller;
     private PlayerHealth health;
+    [SerializeField] private float speedOffset;
 
     private void Awake()
     {
@@ -23,6 +25,7 @@ public class PlayerAnimations : MonoBehaviour
         health.OnHealthDecrease += HitAnim;
         health.OnPlayerDeath += DeathAnim;
         controller.OnPlayerJump += JumpAnim;
+        controller.OnPlayerFly += FlyAnim;
     }
 
     private void OnDisable()
@@ -30,17 +33,14 @@ public class PlayerAnimations : MonoBehaviour
         health.OnHealthDecrease -= HitAnim;
         health.OnPlayerDeath -= DeathAnim;
         controller.OnPlayerJump += JumpAnim;
+        controller.OnPlayerFly -= FlyAnim;
     }
 
     private void Update()
     {
-        if (!health.AliveCheck())
+        if (controller.IsPlayerOnGround())
         {
-            IdleAnim();
-        }
-        else
-        {
-            RunAnim();
+            IdleRunAnims();
         }
     }
 
@@ -54,14 +54,18 @@ public class PlayerAnimations : MonoBehaviour
         animator.SetTrigger("Death");
     }
 
-    private void IdleAnim()
+    private void IdleRunAnims()
     {
-        animator.SetFloat("PlayerSpeed", 0);
-    }
+        animator.SetBool("IsFlying", false);
 
-    private void RunAnim()
-    {
-        animator.SetFloat("PlayerSpeed", Mathf.Abs(rigidBody.velocity.x));
+        if (Mathf.Abs(rigidBody.velocity.x) > speedOffset)
+        {
+            animator.SetFloat("PlayerSpeed", Mathf.Abs(rigidBody.velocity.x));
+        }
+        else
+        {
+            animator.SetFloat("PlayerSpeed", 0);
+        }
     }
 
     private void JumpAnim()
@@ -73,5 +77,4 @@ public class PlayerAnimations : MonoBehaviour
     {
         animator.SetBool("IsFlying", true);
     }
-
 }
