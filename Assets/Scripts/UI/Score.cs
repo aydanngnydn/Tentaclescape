@@ -43,7 +43,6 @@ public class Score : MonoBehaviour
         score += scorePerSecond * Time.deltaTime;
         
     }
-
     private void ScoreEndPanel()
     {
         scoreTextFinish.text = "Score: " + ((int)lastScore).ToString();
