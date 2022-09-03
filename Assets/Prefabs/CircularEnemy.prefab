@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 943037801362115030}
   - component: {fileID: 6643478663115608491}
   - component: {fileID: -332403753022004580}
+  - component: {fileID: 1010176874029609349}
   m_Layer: 0
   m_Name: CircularEnemy
   m_TagString: Untagged
@@ -117,3 +118,17 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 2}
   m_Direction: 0
+--- !u!114 &1010176874029609349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4696483163119140641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7eb8a4f3d6e672840aa2986aeb65a13d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  widthThresold: {x: 0, y: 0}
+  heightThresold: {x: 0, y: 0}
