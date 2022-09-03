@@ -6,30 +6,32 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public ParticleSystem dust;
-    [Header("Movement")]
+    [SerializeField] private ParticleSystem dust;
+
+    [Header("Horizontal Movement")]
     private Vector2 inputDirection;
     private bool facingRight = true;
     [SerializeField] private float moveSpeed;
-    [SerializeField] private float jumpSpeed = 15f;
-    [SerializeField] private float jumpDelay = 0.25f;
-    private float jumpTimer;
-    [SerializeField] private bool jumpMode = true;
 
     [Header("Ground Check")]
-    [SerializeField] private bool isPlayerGrounded;
-    [SerializeField] private LayerMask groundCheckLayer;
+    private bool isPlayerGrounded;
     [SerializeField] private float groundCheckDistance;
     [SerializeField] private Vector3 colliderOffset;
+    [SerializeField] private LayerMask groundCheckLayer;
+
+    [Header("Jump")]
+    [SerializeField] private float jumpSpeed = 15f;
+    [SerializeField] private float jumpDelay = 0.25f;
+    private bool jumpMode = true;
+    private float jumpTimer;
 
     [Header("Physics")]
+    private Rigidbody2D rigidBody;
     [SerializeField] private float maxSpeed = 7f;
-    [SerializeField] private float linearDrag = 4f;
+    [SerializeField] private float linearDrag = 2f;
     [SerializeField] private float gravity = 1;
     [SerializeField] private float fallMultiplier = 4f;
 
-    [Header("Components")]
-    private Rigidbody2D rigidBody;
 
     public event Action OnPlayerJump;
     public event Action OnPlayerFly;
@@ -62,13 +64,11 @@ public class PlayerController : MonoBehaviour
     {
         MovePlayer(inputDirection);
 
-        if (jumpMode)
+        ModifyPhsyics();
+
+        if (CanPlayerJump())
         {
-            ModifyPhysics();
-            if (CanPlayerJump())
-            {
-                JumpPlayer();
-            }
+            JumpPlayer();
         }
     }
 
@@ -113,7 +113,7 @@ public class PlayerController : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, facingRight ? 0 : 180, 0);
     }
 
-    private void ModifyPhysics()
+    private void ModifyPhsyics()
     {
         bool changingDirection = (inputDirection.x > 0 && rigidBody.velocity.x < 0) || (inputDirection.x < 0 && rigidBody.velocity.x > 0);
         if (isPlayerGrounded)
@@ -124,14 +124,15 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                rigidBody.drag = 0f;
+                rigidBody.drag = linearDrag * 0.8f;
             }
+
             rigidBody.gravityScale = 0;
         }
-        else
+        else if (jumpMode)
         {
             rigidBody.gravityScale = gravity;
-            rigidBody.drag = linearDrag * 0.15f;
+            rigidBody.drag = linearDrag;
 
             if (rigidBody.velocity.y < 0)
             {
@@ -142,8 +143,13 @@ public class PlayerController : MonoBehaviour
                 rigidBody.gravityScale = gravity * (fallMultiplier / 2);
             }
         }
+        else
+        {
+            rigidBody.drag = linearDrag;
+            rigidBody.gravityScale = 0;
+        }
     }
-    
+
     #region Particle Dust
 
     void CreateDust()
