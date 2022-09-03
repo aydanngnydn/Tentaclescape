@@ -148,8 +148,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   contactDamage: 1
-  maxHealth: 5
-  currentHealth: 2
+  maxHealth: 80
+  currentHealth: 80
 --- !u!114 &1510190107
 MonoBehaviour:
   m_ObjectHideFlags: 0
