@@ -5042,14 +5042,17 @@ EdgeCollider2D:
   - {x: -0.34176403, y: 0.012687564}
   - {x: -0.27982518, y: -0.4461841}
   - {x: -0.090680465, y: -0.45160437}
-  - {x: 0.0068663657, y: -0.62627345}
+  - {x: -0.015467934, y: -0.45039076}
   - {x: 0.11012111, y: -0.44844115}
   - {x: 0.21854676, y: -0.3448115}
   - {x: 0.30463547, y: -0.21203935}
   - {x: 0.29761636, y: -0.047774196}
+  - {x: 0.27926823, y: 0.32164717}
   - {x: 0.23304403, y: 0.5529274}
+  - {x: 0.10748179, y: 0.6417322}
   - {x: -0.03069675, y: 0.6585611}
   - {x: -0.20599268, y: 0.5827906}
+  - {x: -0.320829, y: 0.38672912}
   - {x: -0.34157497, y: 0.012738466}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
@@ -5069,7 +5072,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dust: {fileID: 2063854468}
   moveSpeed: 20
-  groundCheckDistance: 0.85
+  groundCheckDistance: 0.8
   colliderOffset: {x: 0.2, y: 0, z: 0}
   groundCheckLayer:
     serializedVersion: 2
@@ -5077,7 +5080,7 @@ MonoBehaviour:
   jumpSpeed: 10
   jumpDelay: 0.25
   maxSpeed: 7
-  linearDrag: 4
+  linearDrag: 3
   gravity: 1
   fallMultiplier: 4
 --- !u!114 &4122129743145919848

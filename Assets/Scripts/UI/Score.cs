@@ -17,6 +17,7 @@ public class Score : MonoBehaviour
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
+        scoreTextFinish.gameObject.SetActive(false);
     }
 
     void Start()
@@ -33,6 +34,8 @@ public class Score : MonoBehaviour
         }
         else if (SceneManager.GetActiveScene().buildIndex == 2)
         {
+            scoreTextFinish.gameObject.SetActive(false);
+
             ScoreEndPanel();
         }
     }
@@ -41,11 +44,11 @@ public class Score : MonoBehaviour
     {
         scoreTextGame.text = ((int)score).ToString();
         score += scorePerSecond * Time.deltaTime;
-        
     }
     private void ScoreEndPanel()
     {
         scoreTextFinish.text = "Score: " + ((int)lastScore).ToString();
+        scoreTextFinish.gameObject.SetActive(true);
     }
 }
 
