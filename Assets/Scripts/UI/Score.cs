@@ -48,6 +48,5 @@ public class Score : MonoBehaviour
     {
         scoreTextFinish.text = "Score: " + ((int)lastScore).ToString();
     }
-   
 }
 
