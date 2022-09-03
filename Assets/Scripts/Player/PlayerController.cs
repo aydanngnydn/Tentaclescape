@@ -125,19 +125,16 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            rigidBody.gravityScale = gravity;
             rigidBody.drag = linearDrag * 0.15f;
 
             if (rigidBody.velocity.y < 0)
             {
                 rigidBody.gravityScale = gravity * fallMultiplier;
             }
-            else if (rigidBody.velocity.y > 0 && !Input.GetButton("Jump"))
+            else if (rigidBody.velocity.y > 0 && !Input.GetKey(KeyCode.Space))
             {
                 rigidBody.gravityScale = gravity * (fallMultiplier / 2);
-            }
-            else
-            {
-                rigidBody.gravityScale = gravity;
             }
         }
     }
