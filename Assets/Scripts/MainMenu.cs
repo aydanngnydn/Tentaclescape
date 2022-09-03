@@ -6,12 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    [SerializeField] private PlayerHealth health;
-    private void Start()
-    {
-        health.OnPlayerDeath += EndGame;
-    }
-
     public void PlayGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -25,10 +19,6 @@ public class MainMenu : MonoBehaviour
     public void TryAgain()
     {
         SceneManager.LoadScene(0);
-    }
-    public void EndGame()
-    {
-        SceneManager.LoadScene("EndScene");
     }
     
 }
