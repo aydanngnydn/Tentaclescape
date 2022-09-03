@@ -100,6 +100,8 @@ public class PlayerController : MonoBehaviour
 
     private void JumpPlayer()
     {
+        dust.startLifetime = 0.1f;
+        CreateDust();
         OnPlayerJump?.Invoke();
         rigidBody.velocity = new Vector2(rigidBody.velocity.x, 0);
         rigidBody.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
@@ -108,7 +110,11 @@ public class PlayerController : MonoBehaviour
 
     private void FlipFace()
     {
-        CreateDust();
+        if (isPlayerGrounded)
+        {
+            dust.startLifetime = 0.5f;
+            CreateDust();
+        }
         facingRight = !facingRight;
         transform.rotation = Quaternion.Euler(0, facingRight ? 0 : 180, 0);
     }
@@ -156,6 +162,7 @@ public class PlayerController : MonoBehaviour
     {
         dust.Play();
     }
+    
     #endregion
 
     #region CanPlayer IsPlayer
