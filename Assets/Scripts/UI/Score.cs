@@ -9,12 +9,10 @@ public class Score : MonoBehaviour
     [SerializeField] private float scorePerSecond;
 
     private float score;
-    private float lastScore;
-    
+
     void Start()
     {
         score = 0;
-        lastScore = 0;
     }
 
     void Update()
