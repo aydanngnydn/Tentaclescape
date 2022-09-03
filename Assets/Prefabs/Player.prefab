@@ -333,6 +333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aed965b1942e1bb4aac8a9c73d1484de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dust: {fileID: 0}
   moveSpeed: 20
   jumpSpeed: 10
   jumpDelay: 0.25
@@ -359,6 +360,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2519861f27263834a87aacca6b519672, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  contactDamage: 0
-  maxHealth: 100
-  currentHealth: 80
+  contactDamage: 1
+  maxHealth: 1
+  currentHealth: 1

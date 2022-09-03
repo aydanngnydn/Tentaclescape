@@ -1,14 +1,23 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Score : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI scoreTextGame;
+    [SerializeField] private TextMeshProUGUI scoreTextFinish;
     [SerializeField] private float scorePerSecond;
 
     private float score;
+    private float lastScore;
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
 
     void Start()
     {
@@ -20,6 +29,7 @@ public class Score : MonoBehaviour
         if (SceneManager.GetActiveScene().buildIndex == 1)
         {
             ScorePanel();
+            lastScore = score;
         }
         else if (SceneManager.GetActiveScene().buildIndex == 2)
         {
@@ -29,14 +39,15 @@ public class Score : MonoBehaviour
     
     private void ScorePanel()
     {
-        scoreText.text = ((int)score).ToString();
+        scoreTextGame.text = ((int)score).ToString();
         score += scorePerSecond * Time.deltaTime;
         
     }
+
     private void ScoreEndPanel()
     {
-        scoreText.text = "Score: " + ((int)score).ToString();
-        score += scorePerSecond * Time.deltaTime;
+        scoreTextFinish.text = "Score: " + ((int)lastScore).ToString();
     }
+   
 }
 

@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public ParticleSystem dust;
     [Header("Movement")]
     private Vector2 inputDirection;
     private bool facingRight = true;
@@ -107,6 +108,7 @@ public class PlayerController : MonoBehaviour
 
     private void FlipFace()
     {
+        CreateDust();
         facingRight = !facingRight;
         transform.rotation = Quaternion.Euler(0, facingRight ? 0 : 180, 0);
     }
@@ -141,6 +143,14 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+    
+    #region Particle Dust
+
+    void CreateDust()
+    {
+        dust.Play();
+    }
+    #endregion
 
     #region CanPlayer IsPlayer
 
