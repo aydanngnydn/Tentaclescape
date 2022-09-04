@@ -44,7 +44,7 @@ public class PlayerHealth : MonoBehaviour
 
         if (gameObject != null)
         {
-            if (gameObject.TryGetComponent(out Enemy enemy))
+            if (gameObject.TryGetComponent(out Enemy enemy) || gameObject.CompareTag("Palpus"))
             {
                 DecraseHealth(contactDamage);
             }

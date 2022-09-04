@@ -2419,9 +2419,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: "Dokunga\xE7 (1)"
       objectReference: {fileID: 0}
+    - target: {fileID: 2846768686757895507, guid: 274ee99c38625d544872d2432e4d7f34, type: 3}
+      propertyPath: m_TagString
+      value: Palpus
+      objectReference: {fileID: 0}
     - target: {fileID: 3489325194977319218, guid: 274ee99c38625d544872d2432e4d7f34, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.71
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3489325194977319218, guid: 274ee99c38625d544872d2432e4d7f34, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6357107157298030422, guid: 274ee99c38625d544872d2432e4d7f34, type: 3}
       propertyPath: m_Size.x
@@ -2445,7 +2453,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8799079143067678180, guid: 274ee99c38625d544872d2432e4d7f34, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.82
+      value: 5.99
       objectReference: {fileID: 0}
     - target: {fileID: 8799079143067678180, guid: 274ee99c38625d544872d2432e4d7f34, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2496,9 +2504,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: "Dokunga\xE7 (2)"
       objectReference: {fileID: 0}
+    - target: {fileID: 2846768686757895507, guid: 274ee99c38625d544872d2432e4d7f34, type: 3}
+      propertyPath: m_TagString
+      value: Palpus
+      objectReference: {fileID: 0}
     - target: {fileID: 3489325194977319218, guid: 274ee99c38625d544872d2432e4d7f34, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.71
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3489325194977319218, guid: 274ee99c38625d544872d2432e4d7f34, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6357107157298030422, guid: 274ee99c38625d544872d2432e4d7f34, type: 3}
       propertyPath: m_Size.x
@@ -2534,7 +2550,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8799079143067678180, guid: 274ee99c38625d544872d2432e4d7f34, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.56
+      value: 5.62
       objectReference: {fileID: 0}
     - target: {fileID: 8799079143067678180, guid: 274ee99c38625d544872d2432e4d7f34, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2733,9 +2749,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: "Dokunga\xE7"
       objectReference: {fileID: 0}
+    - target: {fileID: 2846768686757895507, guid: 274ee99c38625d544872d2432e4d7f34, type: 3}
+      propertyPath: m_TagString
+      value: Palpus
+      objectReference: {fileID: 0}
     - target: {fileID: 3489325194977319218, guid: 274ee99c38625d544872d2432e4d7f34, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.71
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3489325194977319218, guid: 274ee99c38625d544872d2432e4d7f34, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6357107157298030422, guid: 274ee99c38625d544872d2432e4d7f34, type: 3}
       propertyPath: m_Sprite
@@ -2763,7 +2787,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8799079143067678180, guid: 274ee99c38625d544872d2432e4d7f34, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.32
+      value: -5.52
       objectReference: {fileID: 0}
     - target: {fileID: 8799079143067678180, guid: 274ee99c38625d544872d2432e4d7f34, type: 3}
       propertyPath: m_LocalPosition.y
