@@ -8,7 +8,7 @@ public class PlayerAnimations : MonoBehaviour
     [SerializeField] private Rigidbody2D rigidBody;
     [SerializeField] private Animator animator;
 
-    private BulletMovement bullet;
+    [SerializeField] private BulletMovement bullet;
     private PlayerHealth health;
     [SerializeField] private float speedOffset;
 
@@ -17,7 +17,6 @@ public class PlayerAnimations : MonoBehaviour
         rigidBody = GetComponentInParent<Rigidbody2D>();
         animator = GetComponentInParent<Animator>();
         health = GetComponentInParent<PlayerHealth>();
-        bullet = FindObjectOfType<BulletMovement>();
     }
 
     private void OnEnable()
