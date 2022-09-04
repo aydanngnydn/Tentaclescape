@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     [Header("Jump")]
     [SerializeField] private float jumpSpeed = 15f;
     [SerializeField] private float jumpDelay = 0.25f;
-    private bool jumpMode = true;
+    private bool jumpMode = false;
     private float jumpTimer;
 
     [Header("Physics")]
@@ -52,10 +52,10 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            jumpMode = !jumpMode;
-        }
+        //if (Input.GetKeyDown(KeyCode.X))
+        //{
+        //    jumpMode = !jumpMode;
+        //}
 
         //PlayerFlyingCheck();
     }
@@ -87,11 +87,6 @@ public class PlayerController : MonoBehaviour
             rigidBody.AddForce(direction.y * moveSpeed * Vector2.up);
         }
 
-        if (CanPlayerFlip())
-        {
-            FlipFace();
-        }
-
         if (Mathf.Abs(rigidBody.velocity.x) > maxSpeed)
         {
             rigidBody.velocity = new Vector2(Mathf.Sign(rigidBody.velocity.x) * maxSpeed, rigidBody.velocity.y);
@@ -102,7 +97,6 @@ public class PlayerController : MonoBehaviour
     {
         dust.startLifetime = 0.1f;
         CreateDust();
-        //OnPlayerJump?.Invoke();
         rigidBody.velocity = new Vector2(rigidBody.velocity.x, 0);
         rigidBody.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
         jumpTimer = 0;
@@ -122,7 +116,7 @@ public class PlayerController : MonoBehaviour
     private void ModifyPhsyics()
     {
         bool changingDirection = (inputDirection.x > 0 && rigidBody.velocity.x < 0) || (inputDirection.x < 0 && rigidBody.velocity.x > 0);
-        if (isPlayerGrounded)
+        if (isPlayerGrounded && jumpMode)
         {
             if (Math.Abs(inputDirection.x) < 0.4f || changingDirection)
             {
@@ -166,15 +160,6 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region CanPlayer IsPlayer
-
-    private bool CanPlayerFlip()
-    {
-        if ((inputDirection.x < 0) && facingRight || (inputDirection.x > 0) && !facingRight)
-        {
-            return true;
-        }
-        return false;
-    }
 
     private bool CanPlayerJump()
     {

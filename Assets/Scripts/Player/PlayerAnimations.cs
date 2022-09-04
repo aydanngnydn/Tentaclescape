@@ -25,7 +25,6 @@ public class PlayerAnimations : MonoBehaviour
     {
         health.OnHealthDecrease += HitAnim;
         health.OnPlayerDeath += DeathAnim;
-        //controller.OnPlayerJump += JumpAnim;
         //controller.OnPlayerFly += FlyAnim;
         bullet.OnBulletStop += StopTimeAnim;
     }
@@ -34,17 +33,16 @@ public class PlayerAnimations : MonoBehaviour
     {
         health.OnHealthDecrease -= HitAnim;
         health.OnPlayerDeath -= DeathAnim;
-        //controller.OnPlayerJump -= JumpAnim;
         //controller.OnPlayerFly -= FlyAnim;
         bullet.OnBulletStop -= StopTimeAnim;
     }
 
     private void Update()
     {
-        //if (controller.IsPlayerOnGround())
-        //{
-        //    IdleRunAnims();
-        //}
+        if (controller.IsPlayerOnGround())
+        {
+            IdleRunAnims();
+        }
     }
 
     private void HitAnim()
@@ -59,29 +57,16 @@ public class PlayerAnimations : MonoBehaviour
 
     private void IdleRunAnims()
     {
-        animator.SetBool("IsFlying", false);
-
         if (Mathf.Abs(rigidBody.velocity.x) > speedOffset)
         {
-            animator.SetFloat("PlayerSpeed", Mathf.Abs(rigidBody.velocity.x));
+            animator.SetFloat("PlayerSpeed", rigidBody.velocity.x);
         }
         else
         {
+            //animator.SetTrigger("IsStay");
             animator.SetFloat("PlayerSpeed", 0);
         }
     }
-
-    private void JumpAnim()
-    {
-        animator.SetTrigger("Jump");
-    }
-
-    private void FlyAnim()
-    {
-        animator.SetBool("IsStopTime", false);
-        animator.SetBool("IsFlying", true);
-    }
-
     private void StopTimeAnim()
     {
         animator.SetBool("IsStopTime", true);
