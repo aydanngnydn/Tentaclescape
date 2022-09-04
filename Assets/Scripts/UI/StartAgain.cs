@@ -18,7 +18,7 @@ public class StartAgain : MonoBehaviour
 
     IEnumerator ChangeScene()
     {
-        yield return new WaitForSeconds(playerDeath.runtimeAnimatorController.animationClips.Length);
+        yield return new WaitForSeconds(playerDeath.runtimeAnimatorController.animationClips[0].length);
         SceneManager.LoadScene("EndScene");
     }
 }
