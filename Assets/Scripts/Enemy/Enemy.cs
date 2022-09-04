@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour
 {
+    [SerializeField] private Animator anim;
     protected void OnCollisionEnter2D(Collision2D other)
     {
         GameObject gameObject = other.gameObject;
@@ -12,7 +13,8 @@ public abstract class Enemy : MonoBehaviour
         {
             if (gameObject.TryGetComponent(out BulletMovement _))
             {
-                Destroy(this.gameObject);
+                anim.SetTrigger("Death");
+                Destroy (this.gameObject, 0.4f); 
             }
         }
     }

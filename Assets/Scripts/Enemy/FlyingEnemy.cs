@@ -16,14 +16,6 @@ public class FlyingEnemy : Enemy
 
     private void Update()
     {
-        if (pos.x > 0)
-        {
-            transform.Translate(new Vector2(- enemyXAxisSpeed * Time.fixedDeltaTime, Mathf.Sin(Time.realtimeSinceStartup) * maxDistanceFromStart));
-        }
-        else if (pos.x < 0)
-        {
-            transform.Translate(new Vector2(enemyXAxisSpeed * Time.fixedDeltaTime, Mathf.Sin(Time.realtimeSinceStartup) * maxDistanceFromStart));
-        }
-        
+        transform.Translate(new Vector2(enemyXAxisSpeed * Time.fixedDeltaTime, Mathf.Sin(Time.realtimeSinceStartup) * maxDistanceFromStart));
     }
 }

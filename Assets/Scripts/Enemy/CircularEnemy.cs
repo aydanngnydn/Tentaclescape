@@ -21,18 +21,9 @@ public class CircularEnemy : Enemy
 
     void Update()
     {
-
         currentAngle += angularSpeed * Time.deltaTime;
         Vector2 offset = new Vector2(Mathf.Sin(currentAngle), Mathf.Cos(currentAngle)) * circleRad;
-
-        if (pos.x > 0)
-        {
-            transform.Translate(-(offset + new Vector2(xSpeed, 0)) * Time.deltaTime);
-        }
-        else if (pos.x < 0)
-        {
-            transform.Translate((offset + new Vector2(xSpeed, 0)) * Time.deltaTime);
-
-        }
+        
+        transform.Translate((offset + new Vector2(xSpeed, 0)) * Time.deltaTime);
     }
 }

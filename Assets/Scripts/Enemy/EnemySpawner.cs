@@ -21,7 +21,15 @@ public class EnemySpawner : MonoBehaviour
             yield return new WaitForSeconds(spawnTime);
             randomSpawnPoint = Random.Range(0, spawnPoints.Length);
             
-            Instantiate(enemy, spawnPoints[randomSpawnPoint].transform.position, Quaternion.identity);
+            if (spawnPoints[randomSpawnPoint].transform.position.x > 0)
+            {
+                Instantiate(enemy, spawnPoints[randomSpawnPoint].transform.position, Quaternion.Euler(new Vector3(0, 180, 0)));
+            }
+            else if (spawnPoints[randomSpawnPoint].transform.position.x < 0)
+            {
+                Instantiate(enemy, spawnPoints[randomSpawnPoint].transform.position, Quaternion.identity);
+            }
+            
         }
     }
 }
