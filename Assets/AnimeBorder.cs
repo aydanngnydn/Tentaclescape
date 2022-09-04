@@ -20,7 +20,6 @@ public class AnimeBorder : MonoBehaviour
     void StopAnim()
     {
         anim.SetBool("Begin", false);
-        
     }
 
 }
