@@ -870,6 +870,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.585638, y: 0.6895435}
   m_EdgeRadius: 0
+--- !u!114 &1406777378 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -581428586240133583, guid: 4387f21f28dc25f468d65671c32e3690, type: 3}
+  m_PrefabInstance: {fileID: 1906024870}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a92aabb808c9ef4b8fabc55f4f26e4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1662942350
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -877,6 +888,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4122129742069141901, guid: e7935c84707de5d44803aa727fa68fc8, type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 1406777378}
     - target: {fileID: 4122129743145919845, guid: e7935c84707de5d44803aa727fa68fc8, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -927,7 +942,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7179393529944571078, guid: e7935c84707de5d44803aa727fa68fc8, type: 3}
       propertyPath: m_WasSpriteAssigned
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7935c84707de5d44803aa727fa68fc8, type: 3}

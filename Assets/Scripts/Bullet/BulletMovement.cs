@@ -10,7 +10,8 @@ public class BulletMovement : MonoBehaviour
     private Rigidbody2D rb;
     private Vector3 lastVelocity;
 
-    public event Action OnBulletStop;
+    public event Action OnBulletStopStart;
+    public event Action OnBulletStopEnd;
 
     private void Awake()
     {
@@ -31,13 +32,14 @@ public class BulletMovement : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Z))
         {
-            OnBulletStop?.Invoke();
+            OnBulletStopStart?.Invoke();
             lastVelocity = rb.velocity;
             rb.velocity = new Vector2(0, 0);
         }
         
         else if (Input.GetKeyUp(KeyCode.Z))
         {
+            OnBulletStopEnd?.Invoke();
             rb.velocity = lastVelocity;
         }
     }

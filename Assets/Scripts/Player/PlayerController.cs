@@ -32,10 +32,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float gravity = 1;
     [SerializeField] private float fallMultiplier = 4f;
 
-
-    //public event Action OnPlayerJump;
-    //public event Action OnPlayerFly;
-
     private void Awake()
     {
         rigidBody = GetComponent<Rigidbody2D>();
