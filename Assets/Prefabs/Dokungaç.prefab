@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3489325194977319218}
   - component: {fileID: 2372748972485884331}
   - component: {fileID: 1134274945777498025}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Animator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 8799079143067678180}
   - component: {fileID: 6357107157298030422}
   - component: {fileID: 3248916835675874190}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: "Dokunga\xE7"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
