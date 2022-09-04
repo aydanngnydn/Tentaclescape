@@ -10,6 +10,7 @@ public class Score : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreTextGame;
     [SerializeField] private TextMeshProUGUI scoreTextFinish;
     [SerializeField] private float scorePerSecond;
+    private PlayerHealth health;
 
     private float score;
     private float lastScore;
@@ -18,6 +19,7 @@ public class Score : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);
         scoreTextFinish.gameObject.SetActive(false);
+        health = FindObjectOfType<PlayerHealth>();
     }
 
     void Start()
@@ -29,7 +31,7 @@ public class Score : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().buildIndex == 1)
         {
-            if(scoreTextFinish.gameObject.activeSelf)
+            if (scoreTextFinish.gameObject.activeSelf)
             {
                 scoreTextFinish.gameObject.SetActive(false);
             }
@@ -40,18 +42,21 @@ public class Score : MonoBehaviour
         {
             ScoreEndPanel();
         }
-      
+
         else if (SceneManager.GetActiveScene().buildIndex == 0)
         {
             Destroy(scoreTextFinish.gameObject);
             Destroy(gameObject);
         }
     }
-    
+
     private void ScorePanel()
     {
-        scoreTextGame.text = ((int)score).ToString();
-        score += scorePerSecond * Time.deltaTime;
+        if (health.AliveCheck())
+        {
+            scoreTextGame.text = ((int)score).ToString();
+            score += scorePerSecond * Time.deltaTime;
+        }
     }
     private void ScoreEndPanel()
     {
