@@ -46,13 +46,13 @@ public class PlayerController : MonoBehaviour
         GetPlayerInput();
         if (jumpMode)
         {
-            if (Input.GetKeyDown(KeyCode.Z))
+            if (Input.GetKeyDown(KeyCode.UpArrow))
             {
                 jumpTimer = Time.time + jumpDelay;
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.X))
         {
             jumpMode = !jumpMode;
         }
@@ -144,7 +144,7 @@ public class PlayerController : MonoBehaviour
             {
                 rigidBody.gravityScale = gravity * fallMultiplier;
             }
-            else if (rigidBody.velocity.y > 0 && !Input.GetKey(KeyCode.Z))
+            else if (rigidBody.velocity.y > 0 && !Input.GetKey(KeyCode.UpArrow))
             {
                 rigidBody.gravityScale = gravity * (fallMultiplier / 2);
             }
