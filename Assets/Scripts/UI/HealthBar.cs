@@ -9,9 +9,16 @@ public class HealthBar : MonoBehaviour
     [SerializeField] private GameObject[] healths;
     private int index = 0;
 
-    private void Start()
+    private void OnEnable()
     {
         _playerHealth.OnHealthDecrease += DestroyHealthbar;
+        _playerHealth.OnPlayerDeath += DestroyHealthbar;
+    }
+
+    private void OnDisable()
+    {
+        _playerHealth.OnHealthDecrease -= DestroyHealthbar;
+        _playerHealth.OnPlayerDeath -= DestroyHealthbar;
     }
     void DestroyHealthbar()
     {

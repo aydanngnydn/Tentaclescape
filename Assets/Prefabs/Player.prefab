@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2063854470}
   - component: {fileID: 2063854468}
   - component: {fileID: 2063854469}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DustPS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4824,7 +4824,7 @@ GameObject:
   - component: {fileID: 4122129742069141901}
   - component: {fileID: 7179393529944571078}
   - component: {fileID: 5098482688749077824}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Character Animation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4860,7 +4860,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 4122129743145919850}
   animator: {fileID: 5098482688749077824}
-  bullet: {fileID: -581428586240133583, guid: 4387f21f28dc25f468d65671c32e3690, type: 3}
+  bullet: {fileID: 0}
   speedOffset: 2
 --- !u!212 &7179393529944571078
 SpriteRenderer:
@@ -4943,7 +4943,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4122129743110792071}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ground Check
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4979,7 +4979,7 @@ GameObject:
   - component: {fileID: 614313638}
   - component: {fileID: 4122129743145919847}
   - component: {fileID: 4122129743145919848}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5141,5 +5141,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   contactDamage: 1
-  maxHealth: 4
-  currentHealth: 4
+  maxHealth: 5
+  currentHealth: 5
