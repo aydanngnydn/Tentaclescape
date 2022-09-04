@@ -27,13 +27,13 @@ public class BulletMovement : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.X))
+        if(Input.GetKeyDown(KeyCode.Z))
         {
             lastVelocity = rb.velocity;
             rb.velocity = new Vector2(0, 0);
         }
         
-        else if (Input.GetKeyUp(KeyCode.X))
+        else if (Input.GetKeyUp(KeyCode.Z))
         {
             rb.velocity = lastVelocity;
         }
