@@ -7,6 +7,7 @@ public class Score : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI scoreTextGame;
     [SerializeField] private TextMeshProUGUI scoreTextFinish;
+    [SerializeField] private TextMeshProUGUI highScore;
     [SerializeField] private float scorePerSecond;
     [SerializeField] private float enemyKillPoints;
 
@@ -19,7 +20,9 @@ public class Score : MonoBehaviour
         score = 0;
         DontDestroyOnLoad(gameObject);
         scoreTextFinish.gameObject.SetActive(false);
+        highScore.gameObject.SetActive(false);
         health = FindObjectOfType<PlayerHealth>();
+        highScore.text = "High Score\n" + ((int)PlayerPrefs.GetFloat("HighScore")).ToString();
     }
 
     void Update()
@@ -29,6 +32,7 @@ public class Score : MonoBehaviour
             if (scoreTextFinish.gameObject.activeSelf)
             {
                 scoreTextFinish.gameObject.SetActive(false);
+                highScore.gameObject.SetActive(false);
             }
             ScorePanel();
             lastScore = score;
@@ -41,6 +45,7 @@ public class Score : MonoBehaviour
         else if (SceneManager.GetActiveScene().buildIndex == 0)
         {
             Destroy(scoreTextFinish.gameObject);
+            Destroy(highScore.gameObject);
             Destroy(gameObject);
         }
     }
@@ -55,7 +60,12 @@ public class Score : MonoBehaviour
     }
     private void ScoreEndPanel()
     {
-        scoreTextFinish.text = "Score: " + ((int)lastScore).ToString();
+        if (lastScore > PlayerPrefs.GetFloat("HighScore", 0))
+        {
+            PlayerPrefs.SetFloat("HighScore",lastScore);
+        }
+        scoreTextFinish.text = "Score\n" + ((int)lastScore).ToString();
+        highScore.gameObject.SetActive(true);
         scoreTextFinish.gameObject.SetActive(true);
     }
 

@@ -18,7 +18,6 @@ public class MainMenu : MonoBehaviour
 
     public void TryAgain()
     {
-        
         SceneManager.LoadScene(0);
     }
     
