@@ -14,7 +14,7 @@ public abstract class Enemy : MonoBehaviour
             if (gameObject.TryGetComponent(out BulletMovement _))
             {
                 anim.SetTrigger("Death");
-                Destroy (this.gameObject, 0.5f); 
+                Destroy (this.gameObject, anim.runtimeAnimatorController.animationClips.Length); 
             }
         }
     }
