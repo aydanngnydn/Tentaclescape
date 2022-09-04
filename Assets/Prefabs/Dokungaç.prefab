@@ -115,6 +115,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8799079143067678180}
   - component: {fileID: 6357107157298030422}
+  - component: {fileID: 3248916835675874190}
   m_Layer: 0
   m_Name: "Dokunga\xE7"
   m_TagString: Untagged
@@ -179,14 +180,53 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 04082843e248c7841897fc4024f4b46b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 7.5, y: 2.5625}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!68 &3248916835675874190
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2846768686757895507}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -3.6931498, y: 0.6395613}
+  - {x: -3.1897862, y: 0.56493485}
+  - {x: -2.9055367, y: 0.3878457}
+  - {x: -2.5218, y: 0.26080534}
+  - {x: -2.1786077, y: 0.23551933}
+  - {x: -1.3113855, y: 0.06828302}
+  - {x: -0.062257405, y: 0.104380965}
+  - {x: 0.8083655, y: 0.11868064}
+  - {x: 1.254271, y: 0.027651042}
+  - {x: 1.8171895, y: -0.1847513}
+  - {x: 2.196305, y: -0.32783508}
+  - {x: 2.695398, y: -0.34806395}
+  - {x: 2.4278898, y: -0.4356058}
+  - {x: 1.6476861, y: -0.23907259}
+  - {x: 0.8488231, y: -0.0023433566}
+  - {x: -0.28895944, y: -0.109678045}
+  - {x: -1.411832, y: -0.37509382}
+  - {x: -2.5590312, y: -0.40866312}
+  - {x: -3.711025, y: -0.5684117}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
