@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,21 +8,18 @@ public class Score : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreTextGame;
     [SerializeField] private TextMeshProUGUI scoreTextFinish;
     [SerializeField] private float scorePerSecond;
-    private PlayerHealth health;
+    [SerializeField] private float enemyKillPoints;
 
+    private PlayerHealth health;
     private float score;
     private float lastScore;
 
     private void Awake()
     {
+        score = 0;
         DontDestroyOnLoad(gameObject);
         scoreTextFinish.gameObject.SetActive(false);
         health = FindObjectOfType<PlayerHealth>();
-    }
-
-    void Start()
-    {
-        score = 0;
     }
 
     void Update()
@@ -63,5 +58,9 @@ public class Score : MonoBehaviour
         scoreTextFinish.text = "Score: " + ((int)lastScore).ToString();
         scoreTextFinish.gameObject.SetActive(true);
     }
-}
 
+    public void KillScoreUpdate()
+    {
+        score += enemyKillPoints;
+    }
+}
