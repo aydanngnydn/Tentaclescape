@@ -45,3 +45,12 @@ TagManager:
   - name: Player
     uniqueID: 1154777247
     locked: 0
+  - name: Enemy
+    uniqueID: 3489071501
+    locked: 0
+  - name: Wall
+    uniqueID: 3777096307
+    locked: 0
+  - name: Decoration
+    uniqueID: 1566525755
+    locked: 0
