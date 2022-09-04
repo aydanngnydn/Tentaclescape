@@ -25,7 +25,6 @@ public class PlayerAnimations : MonoBehaviour
     {
         health.OnHealthDecrease += HitAnim;
         health.OnPlayerDeath += DeathAnim;
-        //controller.OnPlayerFly += FlyAnim;
         bullet.OnBulletStop += StopTimeAnim;
     }
 
@@ -33,7 +32,6 @@ public class PlayerAnimations : MonoBehaviour
     {
         health.OnHealthDecrease -= HitAnim;
         health.OnPlayerDeath -= DeathAnim;
-        //controller.OnPlayerFly -= FlyAnim;
         bullet.OnBulletStop -= StopTimeAnim;
     }
 
@@ -63,13 +61,11 @@ public class PlayerAnimations : MonoBehaviour
         }
         else
         {
-            //animator.SetTrigger("IsStay");
             animator.SetFloat("PlayerSpeed", 0);
         }
     }
     private void StopTimeAnim()
     {
         animator.SetBool("IsStopTime", true);
-        animator.SetBool("IsFlying", false);
     }
 }
