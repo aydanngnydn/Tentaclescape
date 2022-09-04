@@ -5061,7 +5061,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aed965b1942e1bb4aac8a9c73d1484de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dust: {fileID: 0}
+  dust: {fileID: 2063854468}
   moveSpeed: 20
   groundCheckDistance: 0.8
   colliderOffset: {x: 0.2, y: 0, z: 0}
