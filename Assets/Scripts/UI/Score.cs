@@ -43,7 +43,7 @@ public class Score : MonoBehaviour
       
         else if (SceneManager.GetActiveScene().buildIndex == 0)
         {
-            Destroy(scoreTextFinish);
+            Destroy(scoreTextFinish.gameObject);
             Destroy(gameObject);
         }
     }
