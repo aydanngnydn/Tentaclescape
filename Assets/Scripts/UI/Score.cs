@@ -40,6 +40,12 @@ public class Score : MonoBehaviour
         {
             ScoreEndPanel();
         }
+      
+        else if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            Destroy(scoreTextFinish);
+            Destroy(gameObject);
+        }
     }
     
     private void ScorePanel()
