@@ -33,8 +33,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float fallMultiplier = 4f;
 
 
-    public event Action OnPlayerJump;
-    public event Action OnPlayerFly;
+    //public event Action OnPlayerJump;
+    //public event Action OnPlayerFly;
 
     private void Awake()
     {
@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
             jumpMode = !jumpMode;
         }
 
-        PlayerFlyingCheck();
+        //PlayerFlyingCheck();
     }
 
     private void FixedUpdate()
@@ -102,7 +102,7 @@ public class PlayerController : MonoBehaviour
     {
         dust.startLifetime = 0.1f;
         CreateDust();
-        OnPlayerJump?.Invoke();
+        //OnPlayerJump?.Invoke();
         rigidBody.velocity = new Vector2(rigidBody.velocity.x, 0);
         rigidBody.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
         jumpTimer = 0;
@@ -191,13 +191,13 @@ public class PlayerController : MonoBehaviour
         return isPlayerGrounded;
     }
 
-    private void PlayerFlyingCheck()
-    {
-        if (!jumpMode && !isPlayerGrounded)
-        {
-            OnPlayerFly?.Invoke();
-        }
-    }
+    //private void PlayerFlyingCheck()
+    //{
+    //    if (!jumpMode && !isPlayerGrounded)
+    //    {
+    //        OnPlayerFly?.Invoke();
+    //    }
+    //}
 
     #endregion
 

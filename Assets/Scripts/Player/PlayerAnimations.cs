@@ -8,6 +8,7 @@ public class PlayerAnimations : MonoBehaviour
     [SerializeField] private Rigidbody2D rigidBody;
     [SerializeField] private Animator animator;
 
+    [SerializeField] private BulletMovement bullet;
     private PlayerController controller;
     private PlayerHealth health;
     [SerializeField] private float speedOffset;
@@ -24,24 +25,26 @@ public class PlayerAnimations : MonoBehaviour
     {
         health.OnHealthDecrease += HitAnim;
         health.OnPlayerDeath += DeathAnim;
-        controller.OnPlayerJump += JumpAnim;
-        controller.OnPlayerFly += FlyAnim;
+        //controller.OnPlayerJump += JumpAnim;
+        //controller.OnPlayerFly += FlyAnim;
+        bullet.OnBulletStop += StopTimeAnim;
     }
 
     private void OnDisable()
     {
         health.OnHealthDecrease -= HitAnim;
         health.OnPlayerDeath -= DeathAnim;
-        controller.OnPlayerJump += JumpAnim;
-        controller.OnPlayerFly -= FlyAnim;
+        //controller.OnPlayerJump -= JumpAnim;
+        //controller.OnPlayerFly -= FlyAnim;
+        bullet.OnBulletStop -= StopTimeAnim;
     }
 
     private void Update()
     {
-        if (controller.IsPlayerOnGround())
-        {
-            IdleRunAnims();
-        }
+        //if (controller.IsPlayerOnGround())
+        //{
+        //    IdleRunAnims();
+        //}
     }
 
     private void HitAnim()
@@ -75,6 +78,13 @@ public class PlayerAnimations : MonoBehaviour
 
     private void FlyAnim()
     {
+        animator.SetBool("IsStopTime", false);
         animator.SetBool("IsFlying", true);
+    }
+
+    private void StopTimeAnim()
+    {
+        animator.SetBool("IsStopTime", true);
+        animator.SetBool("IsFlying", false);
     }
 }

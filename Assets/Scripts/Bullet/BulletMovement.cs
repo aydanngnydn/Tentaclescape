@@ -10,6 +10,8 @@ public class BulletMovement : MonoBehaviour
     private Rigidbody2D rb;
     private Vector3 lastVelocity;
 
+    public event Action OnBulletStop;
+
     private void Awake()
     {
        rb = GetComponent<Rigidbody2D>();
@@ -29,6 +31,7 @@ public class BulletMovement : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Z))
         {
+            OnBulletStop?.Invoke();
             lastVelocity = rb.velocity;
             rb.velocity = new Vector2(0, 0);
         }
