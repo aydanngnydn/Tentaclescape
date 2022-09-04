@@ -4,33 +4,27 @@ using UnityEngine;
 
 public class MangaEffect : MonoBehaviour
 {
-    private BulletMovement bullet;
+    private PlayerHealth health;
     private Animator animator;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        health = GetComponentInParent<PlayerHealth>();
     }
 
     private void OnEnable()
     {
-        bullet.OnBulletStopStart += MangaEffectAnimStart;
-        bullet.OnBulletStopEnd += MangaEffectAnimEnd;
+        health.OnHealthDecrease += MangaEffectAnimStart;
     }
 
     private void OnDisable()
     {
-        bullet.OnBulletStopStart -= MangaEffectAnimStart;
-        bullet.OnBulletStopEnd -= MangaEffectAnimEnd;
+        health.OnHealthDecrease -= MangaEffectAnimStart;
     }
 
     private void MangaEffectAnimStart()
     {
-        animator.SetBool("IsStopTime", true);
-    }
-
-    private void MangaEffectAnimEnd()
-    {
-        animator.SetBool("IsStopTime", false);
+        animator.SetTrigger("TakeDamage");
     }
 }
