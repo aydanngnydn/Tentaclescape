@@ -7,8 +7,8 @@ public class PlayerAnimations : MonoBehaviour
     [Header("Components")]
     [SerializeField] private Rigidbody2D rigidBody;
     [SerializeField] private Animator animator;
-
     [SerializeField] private BulletMovement bullet;
+
     private PlayerHealth health;
     [SerializeField] private float speedOffset;
 
