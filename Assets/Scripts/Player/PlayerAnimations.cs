@@ -21,6 +21,7 @@ public class PlayerAnimations : MonoBehaviour
 
     private void OnEnable()
     {
+        health.OnHealthDecrease += HitAnim;
         health.OnPlayerDeath += DeathAnim;
         bullet.OnBulletStopStart += StopTimeAnimStart;
         bullet.OnBulletStopEnd += StopTimeAnimEnd;
@@ -28,6 +29,7 @@ public class PlayerAnimations : MonoBehaviour
 
     private void OnDisable()
     {
+        health.OnHealthDecrease -= HitAnim;
         health.OnPlayerDeath -= DeathAnim;
         bullet.OnBulletStopStart -= StopTimeAnimStart;
         bullet.OnBulletStopEnd -= StopTimeAnimEnd;
@@ -35,20 +37,20 @@ public class PlayerAnimations : MonoBehaviour
 
     private void Update()
     {
-            IdleRunAnims();
+        IdleAnim();
     }
 
-    //private void HitAnim()
-    //{
-    //    animator.SetTrigger("TakeDamage");
-    //}
+    private void HitAnim()
+    {
+        //animator.SetTrigger("TakeDamage");
+    }
 
     private void DeathAnim()
     {
         animator.SetTrigger("Death");
     }
 
-    private void IdleRunAnims()
+    private void IdleAnim()
     {
         if (Mathf.Abs(rigidBody.velocity.x) > speedOffset)
         {
@@ -62,8 +64,8 @@ public class PlayerAnimations : MonoBehaviour
     private void StopTimeAnimStart()
     {
         animator.SetBool("IsStopTime", true);
-    }  
-    
+    }
+
     private void StopTimeAnimEnd()
     {
         animator.SetBool("IsStopTime", false);
