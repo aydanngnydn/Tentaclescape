@@ -182,7 +182,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
@@ -207,8 +207,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 3132870764243107620}
+  collider: {fileID: 0}
   angularSpeed: 2
-  circleRad: 5
+  circleRad: 3
   xSpeed: 2
 --- !u!70 &-332403753022004580
 CapsuleCollider2D:
