@@ -18,7 +18,7 @@ public class PlayerHealth : MonoBehaviour
         {
             OnPlayerDeath?.Invoke();
 
-            //gameObject.SetActive(false);
+            Destroy(gameObject, 0.5f);
         }
         else
         {

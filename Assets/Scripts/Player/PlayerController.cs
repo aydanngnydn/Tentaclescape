@@ -48,12 +48,10 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        //if (Input.GetKeyDown(KeyCode.X))
-        //{
-        //    jumpMode = !jumpMode;
-        //}
-
-        //PlayerFlyingCheck();
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            jumpMode = !jumpMode;
+        }
     }
 
     private void FixedUpdate()
@@ -171,14 +169,6 @@ public class PlayerController : MonoBehaviour
     {
         return isPlayerGrounded;
     }
-
-    //private void PlayerFlyingCheck()
-    //{
-    //    if (!jumpMode && !isPlayerGrounded)
-    //    {
-    //        OnPlayerFly?.Invoke();
-    //    }
-    //}
 
     #endregion
 
