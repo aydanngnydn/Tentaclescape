@@ -17,12 +17,11 @@ public class Score : MonoBehaviour
 
     private void Awake()
     {
-        score = 0;
+        //PlayerPrefs.DeleteAll();
         DontDestroyOnLoad(gameObject);
         scoreTextFinish.gameObject.SetActive(false);
         highScore.gameObject.SetActive(false);
         health = FindObjectOfType<PlayerHealth>();
-        highScore.text = "High Score\n" + ((int)PlayerPrefs.GetFloat("HighScore")).ToString();
     }
 
     void Update()
@@ -60,11 +59,13 @@ public class Score : MonoBehaviour
     }
     private void ScoreEndPanel()
     {
-        if (lastScore > PlayerPrefs.GetFloat("HighScore", 0))
+        if (lastScore > PlayerPrefs.GetFloat("HighScore"))
         {
-            PlayerPrefs.SetFloat("HighScore",lastScore);
+            PlayerPrefs.SetFloat("HighScore", lastScore);
         }
+
         scoreTextFinish.text = "Score\n" + ((int)lastScore).ToString();
+        highScore.text = "High Score\n" + ((int)PlayerPrefs.GetFloat("HighScore")).ToString();
         highScore.gameObject.SetActive(true);
         scoreTextFinish.gameObject.SetActive(true);
     }

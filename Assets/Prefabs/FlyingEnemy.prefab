@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8758718241944012600}
   - component: {fileID: 7784260118911630856}
   - component: {fileID: -6175590399998599352}
-  - component: {fileID: 1812007533038450895}
+  - component: {fileID: 2358440752250990738}
   - component: {fileID: 970676794686501489}
   - component: {fileID: -2119839375784243049}
   m_Layer: 9
@@ -110,8 +110,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &1812007533038450895
-BoxCollider2D:
+--- !u!70 &2358440752250990738
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -123,19 +123,9 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0.25, y: 0.25, z: 0.25, w: 0.25}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.984375, y: 0.984375}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Offset: {x: -0.058279872, y: 0.049954902}
+  m_Size: {x: 1.7155824, y: 1.1702398}
+  m_Direction: 1
 --- !u!114 &970676794686501489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,8 +140,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 5971422048786818014}
   collider: {fileID: 0}
-  maxDistanceFromStart: 0.007
-  enemyXAxisSpeed: 0.5
+  maxDistanceFromStart: 0.004
+  enemyXAxisSpeed: 1.2
 --- !u!114 &-2119839375784243049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,7 +253,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 3, y: 1.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
