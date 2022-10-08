@@ -61,6 +61,7 @@ public class PlayerAnimations : MonoBehaviour
             animator.SetFloat("PlayerSpeed", 0);
         }
     }
+
     private void StopTimeAnimStart()
     {
         animator.SetBool("IsStopTime", true);
