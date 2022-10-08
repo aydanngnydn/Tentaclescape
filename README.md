@@ -1,5 +1,7 @@
 # Tentaclescape
 
+![inGame](Assets/Textures/UI/Menu%20Background.png)
+
 Tentaclescape is made for [MiniJam114](https://itch.io/jam/mini-jam-114-anime).
 
 ## Description
@@ -44,7 +46,3 @@ The limitation "Locked In Place" is incorporated as a mechanic that stops the on
 
 - 0.1
   - Initial Release, Jam Build
-
-## Logo
-
-![inGame](Assets/Textures/UI/Menu%20Background.png)
